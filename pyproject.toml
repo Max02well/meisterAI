@@ -1,0 +1,9 @@
+[project]
+name = "meisterai"
+version = "0.1.0"
+description = "MeisterAI is an AI-powered Retrieval-Augmented Generation (RAG) application designed to help in diagnosing, maintaining, and repairing German vehicles."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "chromadb>=1.5.9",
+]
