@@ -5,16 +5,21 @@ import uuid
 from src.ingestion.loader import load_documents
 from src.ingestion.chunker import chunk_documents
 from src.ingestion.embedder import get_collection
+from src.retrieval.bm25 import build_bm25
 
 
 documents = load_documents()
 
 chunks = chunk_documents(documents)
+build_bm25(chunks)
+
+
 if not chunks:
     print("No chunks were created. Please check the documents and try again.")
     exit()
 
 collection = get_collection()
+
 
 collection.add(
 

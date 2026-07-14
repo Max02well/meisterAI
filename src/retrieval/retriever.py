@@ -1,20 +1,20 @@
-from chromadb import PersistentClient
+  
+from src.retrieval.hybrid import HybridSearcher
+from src.reranking.cross_encoder import Reranker
 
 
 class Retriever:
 
     def __init__(self):
-        client = PersistentClient(path="./chroma_db")
 
-        self.collection = client.get_or_create_collection(
-            name="knowledge_base"
+        self.searcher = HybridSearcher()
+        self.reranker = Reranker()
+
+    def search(self, query):
+
+      results = self.searcher.search(query)
+      
+      return self.reranker.rerank(
+            query,
+            results
         )
-
-    def search(self, query: str, k: int = 5):
-
-        results = self.collection.query(
-            query_texts=[query],
-            n_results=k
-        )
-
-        return results
