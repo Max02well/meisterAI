@@ -8,7 +8,7 @@ class Retriever:
     def __init__(self):
 
         self.searcher = HybridSearcher()
-        self.reranker = Reranker()
+        #self.reranker = Reranker()
 
     def search(self, query):
 
