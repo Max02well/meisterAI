@@ -1,4 +1,4 @@
-from openai import OpenAI
+from openai import OpenAI,APIConnectionError
 
 client = OpenAI(
     base_url="http://localhost:11434/v1",
@@ -13,7 +13,7 @@ def generate(prompt):
             model="qwen2.5:7b",
 
             temperature=0,
-            stream= True,
+            # stream= True,
 
             messages=[
                 {
@@ -24,9 +24,7 @@ def generate(prompt):
         )
 
         return response.choices[0].message.content
-
     except APIConnectionError:
-            raise RuntimeError(
-                "Could not connect to Ollama. "
-                "Make sure Ollama is running by executing 'ollama serve'."
-            )
+        return "Unable to connect to the Ollama server."
+    except Exception as e:
+        return f"LLM Error: {e}"
