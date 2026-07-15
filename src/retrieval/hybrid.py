@@ -16,9 +16,9 @@ class HybridSearcher:
      # Search for documents using both vector and keyword search, then merge results   
     def search(self, query):
 
-        vector_results = self.vector.search(query, k=15)
+        vector_results = self.vector.search(query, k=8)
 
-        keyword_results = self.keyword.search(query, k=15)
+        keyword_results = self.keyword.search(query, k=8)
 
         return self.merge(
             vector_results,

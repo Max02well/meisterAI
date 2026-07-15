@@ -13,7 +13,7 @@ class Reranker:
         self,
         query,
         results,
-        top_k=5
+        top_k=8
     ):
 
         pairs = [

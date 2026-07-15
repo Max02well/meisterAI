@@ -9,10 +9,11 @@ def generate(prompt):
     try:
         response = client.chat.completions.create(
 
-            model="llama3.1",
-            # model="qwen2.5:7b",
+            # model="llama3.1",
+            model="qwen2.5:7b",
 
             temperature=0,
+            stream= True,
 
             messages=[
                 {

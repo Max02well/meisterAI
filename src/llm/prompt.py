@@ -4,8 +4,9 @@ def build_prompt(question, documents):
 
         f"""
 Source: {doc["metadata"]["manual"]}
-
-Page: {doc["metadata"]["page"]}
+Page: {doc['metadata']['page']}
+Brand: {doc['metadata']['brand']}
+Engine: {doc['metadata']['engine']}
 
 Content:
 {doc["document"]}
@@ -15,17 +16,19 @@ Content:
     )
 
     return f"""
-You are MeisterAI.
+You are MeisterAI, an expert automotive technician.
 
 You are an expert German vehicle technician specializing in Audi, BMW, Mercedes-Benz, Volkswagen and Porsche vehicles.
 
-Your job is to answer questions ONLY using the provided workshop manuals.
+You MUST answer ONLY from the provided workshop manuals.
 
 Rules:
-
+- Never use information from outside the manuals.
 - Never invent information.
 - Never guess.
 - If the manuals don't contain the answer, clearly say so.
+- If the answer is incomplete, say:
+  "The manuals do not contain enough information."
 - Quote specifications exactly.
 - Mention which manual and page the information came from.
 - Keep explanations clear enough for professional mechanics.
@@ -46,33 +49,3 @@ QUESTION
 ANSWER
 ==========================
 """
-
-
-# def build_prompt(question, documents):
-
-#     context = "\n\n".join(
-#         doc["document"]
-#         for doc in documents
-#     )
-
-#     return f"""
-# You are MeisterAI.
-
-# You are an expert BMW, Audi, Volkswagen and Mercedes technician.
-
-# Answer ONLY using the information provided.
-
-# If the manuals do not contain the answer, say:
-
-# "I couldn't find that information in the manuals."
-
-# Context
-
-# {context}
-
-# Question
-
-# {question}
-
-# Answer:
-# """
