@@ -224,8 +224,6 @@ meisterAI/
 | Embedding Model | Sentence Transformers / ONNX MiniLM |
 | AI | OpenAI / Gemini / Ollama (Future) |
 | Document Processing | LangChain |
-| Data Handling | Pandas |
-| Machine Learning | Scikit-Learn |
 | API Server | Uvicorn |
 | Package Manager | uv |
 
@@ -250,24 +248,8 @@ sentence-transformers
 ## Document Processing
 
 ```
-pypdf
 pymupdf
-python-docx
-beautifulsoup4
-markdown
 ```
-
----
-
-## Machine Learning
-
-```
-numpy
-pandas
-scikit-learn
-joblib
-```
-
 ---
 
 ## Utilities
